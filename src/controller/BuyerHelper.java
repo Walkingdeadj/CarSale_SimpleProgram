@@ -7,7 +7,7 @@ import javax.persistence.TypedQuery;
 import model.Buyer;
 
 public class BuyerHelper {
-	public static EntityManagerFactory emfactory1 = Persistence.createEntityManagerFactory("UsersCarSaleList");
+	public static EntityManagerFactory emfactory1 = Persistence.createEntityManagerFactory("UsersCarSale");
 	
 	public void insertBuyer(Buyer b) {
 		EntityManager em = emfactory1.createEntityManager();

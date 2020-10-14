@@ -8,7 +8,7 @@ import javax.persistence.TypedQuery;
 import model.CarSale;
 
 public class CarSaleHelper {
-public static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsersCarSaleList");
+public static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsersCarSale");
 	
 	public void insertCarSale(CarSale cs) {
 		EntityManager em = emfactory.createEntityManager();
