@@ -13,7 +13,7 @@
 	<h3 style="color:red" style="font-size:10px"> Select car first then do the operation </h3>
 
 	<form method = "post" action = "navigationServlet">	
-	<table>
+	<table border="1">
 	<c:forEach items="${requestScope.allCars}" var="currentcar">
 	<tr>
  	<td><input type = "radio" name ="id" value = "${currentcar.id}"></td>
