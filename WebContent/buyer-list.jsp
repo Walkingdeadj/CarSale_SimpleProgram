@@ -14,7 +14,7 @@
 
 	<form method = "post" action = "navigationServlet">	
 	<table border="2">
-	<tr><td></td>ID<td>Name</td><td>Phone Number</td></tr>
+	<tr><td>ID</td><td>Name</td><td>Phone Number</td></tr>
 	<c:forEach items="${requestScope.allBuyers}" var="currentBuyer">
 	<tr>
  	<td><input type = "radio" name ="id" value = "${currentBuyer.id}"></td>
