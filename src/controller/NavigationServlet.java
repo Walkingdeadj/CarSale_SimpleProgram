@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Buyer;
 import model.CarList;
 
 /**
@@ -38,6 +39,7 @@ public class NavigationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = "/viewAllCarsServlet";
 		CarListHelper dao = new CarListHelper();
+		BuyerHelper buyerDao = new BuyerHelper();
 		String act = request.getParameter("doThisToCar");
 
 		if (act.equals("delete")) {
@@ -64,6 +66,29 @@ public class NavigationServlet extends HttpServlet {
 			path = "/index.html";
 
 		}
+		else if (act.equals("deleteBuyer")) {
+			try {
+				Integer tempId = Integer.parseInt(request.getParameter("id"));
+				Buyer buyerToDelete = buyerDao.searchForBuyerByID(tempId);
+				buyerDao.deleteBuyer(buyerToDelete);
+			} catch (NumberFormatException e) {
+				System.out.println("Forgot to select a buyer");
+			}
+
+		} else if (act.equals("editBuyer")) {
+			try {
+				Integer tempId = Integer.parseInt(request.getParameter("id"));
+				Buyer buyerToEdit = buyerDao.searchForBuyerByID(tempId);
+				request.setAttribute("buyerToEit", buyerToEdit);
+				path = "/edit-buyer.jsp";
+			} catch (NumberFormatException e) {
+				System.out.println("Forgot to select a buyer");
+			}
+
+		} else if (act.equals("addBuyer")) {
+			path = "/add-buyer.jsp";
+
+		}		
 		getServletContext().getRequestDispatcher(path).forward(request,response);
 	}
 
