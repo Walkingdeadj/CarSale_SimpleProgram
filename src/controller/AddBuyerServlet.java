@@ -11,16 +11,16 @@ import model.Buyer;
 import model.CarList;
 
 /**
- * Servlet implementation class EditBuyerServlet
+ * Servlet implementation class AddBuyerServlet
  */
-@WebServlet(name = "editBuyerServlet", urlPatterns = { "/editBuyerServlet" })
-public class EditBuyerServlet extends HttpServlet {
+@WebServlet(name = "addBuyerServlet", urlPatterns = { "/addBuyerServlet" })
+public class AddBuyerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditBuyerServlet() {
+    public AddBuyerServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,20 +29,14 @@ public class EditBuyerServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BuyerHelper dao = new BuyerHelper();
 		String name = request.getParameter("name");
-		String num = request.getParameter("pNum");
-		Integer tempId = Integer.parseInt(request.getParameter("id"));
-				
-		Buyer BuyerToUpdate = dao.searchForBuyerByID(tempId);
-		BuyerToUpdate.setBuyerName(name);
-		BuyerToUpdate.setBuyerPNum(num);
-									
+		String number = request.getParameter("pNum");
 		
+		Buyer br = new Buyer(name,number);
+		BuyerHelper dao = new BuyerHelper();
+		dao.insertBuyer(br);
 		
-		dao.UpdateBuyer(BuyerToUpdate);
-
-		getServletContext().getRequestDispatcher("/viewAllBuyersServlet").forward(request, response);
+		getServletContext().getRequestDispatcher("/add-buyer.jsp").forward(request, response);
 	}
 
 }
