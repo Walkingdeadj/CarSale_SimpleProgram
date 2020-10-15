@@ -40,6 +40,7 @@ public class NavigationServlet extends HttpServlet {
 		String path = "/viewAllCarsServlet";
 		CarListHelper dao = new CarListHelper();
 		BuyerHelper buyerDao = new BuyerHelper();
+		CarSaleHelper saleDao = new CarSaleHelper();
 		String act = request.getParameter("doThisToCar");
 
 		if (act.equals("delete")) {
@@ -91,7 +92,21 @@ public class NavigationServlet extends HttpServlet {
 		} else if (act.equals("addBuyer")) {
 			path = "/add-buyer.jsp";
 
-		}		
+		}
+		
+		else if (act.equals("addSale")) {			
+			
+		}
+		else if (act.equals("deleteSale")) {
+			try {
+				Integer tempId = Integer.parseInt(request.getParameter("id"));
+				saleDao.deleteByID(tempId);
+				 path = "/viewAllSalesServlet";				 				
+			} catch (NumberFormatException e) {
+				System.out.println("Forgot to select a sale");
+			}
+
+		}
 		getServletContext().getRequestDispatcher(path).forward(request,response);
 	}
 
