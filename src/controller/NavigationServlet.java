@@ -71,6 +71,9 @@ public class NavigationServlet extends HttpServlet {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				Buyer buyerToDelete = buyerDao.searchForBuyerByID(tempId);
 				buyerDao.deleteBuyer(buyerToDelete);
+				 path = "/viewAllBuyersServlet";
+				 
+				 
 			} catch (NumberFormatException e) {
 				System.out.println("Forgot to select a buyer");
 			}

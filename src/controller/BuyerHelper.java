@@ -59,7 +59,11 @@ public class BuyerHelper {
 	}
 
 	public void UpdateBuyer(Buyer buyerToUpdate) {
-		// TODO Auto-generated method stub
+		EntityManager em = emfactory1.createEntityManager();
+		em.getTransaction().begin();
 		
+		em.merge(buyerToUpdate);
+		em.getTransaction().commit();
+		em.close();
 	}
 }
