@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,7 +27,7 @@ public class CarSale {
 	private LocalDate saleDate;
 	@Column(name="PRICE")
 	private int price;
-	@ManyToOne (cascade=CascadeType.PERSIST)
+	@OneToOne (cascade=CascadeType.PERSIST)
 	@JoinColumn(name="BUYER_ID")
 	private Buyer buyer;
 	/**
@@ -34,13 +35,9 @@ public class CarSale {
 	@JoinColumn(name="CAR_ID")
 	private CarList carList;
 	*/
-	@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
-	@JoinTable(
-			name = "CARS_ON_LIST",
-			joinColumns={ @JoinColumn(name="SALE_ID", referencedColumnName="SALE_ID") },
-		    inverseJoinColumns={ @JoinColumn(name="CAR_ID", referencedColumnName="CAR_ID", unique=true) }
-	)
-	private List<CarList> listOfCars;
+	@OneToOne(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)	
+	@JoinColumn(name="CAR_ID")
+	private CarList car;
 			
 	public CarSale() {
 		super();
