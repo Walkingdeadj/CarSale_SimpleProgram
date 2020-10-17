@@ -5,7 +5,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import model.Buyer;
-import model.CarList;
 
 public class BuyerHelper {
 	public static EntityManagerFactory emfactory1 = Persistence.createEntityManagerFactory("UsersCarSale");

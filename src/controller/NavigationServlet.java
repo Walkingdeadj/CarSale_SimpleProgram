@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -95,7 +97,11 @@ public class NavigationServlet extends HttpServlet {
 		}
 		
 		else if (act.equals("addSale")) {			
-			
+			List<CarList> allCars = dao.showAllCars();//get all of the cars
+			request.setAttribute("allCars", allCars);
+			List<Buyer> allBuyers = buyerDao.showAllBuyers();//get all of the buyers
+			request.setAttribute("allBuyers", allBuyers);			
+			path = "/add-sale.jsp";//go to the add sale page
 		}
 		else if (act.equals("deleteSale")) {
 			try {

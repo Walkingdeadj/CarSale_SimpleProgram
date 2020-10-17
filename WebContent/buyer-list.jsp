@@ -27,6 +27,10 @@
 	<input type = "submit" value = "deleteBuyer" name="doThisToCar">
 	<input type = "submit" value = "addBuyer" name = "doThisToCar">
 	</form>
+	
+		<a href = "viewAllCarsServlet">View the complete list of cars</a>
+	<a href = "viewAllBuyersServlet">View the complete list buyers</a>
+	<a href = "viewAllSalesServlet">View all car sales</a>
 </body>
 </body>
 </html>

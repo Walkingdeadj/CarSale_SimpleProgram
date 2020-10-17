@@ -31,8 +31,12 @@ public class ViewAllSalesServlet extends HttpServlet {
 		String path = "/sale-list.jsp";
 		if(dao.getSaleLists().isEmpty()){
 			path = "/add-sale.jsp";
+			
+			
 		}
+		
 		getServletContext().getRequestDispatcher(path).forward(request, response); 
+		
 	}
 
 	/**
