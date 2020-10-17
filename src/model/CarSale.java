@@ -27,7 +27,8 @@ public class CarSale {
 	private LocalDate saleDate;
 	@Column(name="PRICE")
 	private int price;
-	@OneToOne (cascade=CascadeType.PERSIST)
+	@OneToOne(cascade={CascadeType.PERSIST,
+			CascadeType.REMOVE}, fetch=FetchType.EAGER)	
 	@JoinColumn(name="BUYER_ID")
 	private Buyer buyer;
 	/**
@@ -35,7 +36,8 @@ public class CarSale {
 	@JoinColumn(name="CAR_ID")
 	private CarList carList;
 	*/
-	@OneToOne(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)	
+	@OneToOne(cascade={CascadeType.PERSIST,
+			CascadeType.REMOVE}, fetch=FetchType.EAGER)	
 	@JoinColumn(name="CAR_ID")
 	private CarList car;
 			
@@ -43,21 +45,21 @@ public class CarSale {
 		super();
 	}
 	
-	public CarSale(int id, LocalDate saleDate, int price, Buyer buyer, List<CarList> listOfCars) {
+	public CarSale(int id, LocalDate saleDate, int price, Buyer buyer, CarList listOfCars) {
 		super();
 		this.id = id;
 		this.saleDate = saleDate;
 		this.price = price;
 		this.buyer = buyer;
-		this.listOfCars = listOfCars;
+		this.car = listOfCars;
 	}
 	
-	public CarSale(LocalDate saleDate, int price, Buyer buyer, List<CarList> listOfCars) {
+	public CarSale(LocalDate saleDate, int price, Buyer buyer, CarList listOfCars) {
 		super();
 		this.saleDate = saleDate;
 		this.price = price;
 		this.buyer = buyer;
-		this.listOfCars = listOfCars;
+		this.car = listOfCars;
 	}
 	
 	public CarSale(LocalDate saleDate, int price, Buyer buyer) {
@@ -96,20 +98,18 @@ public class CarSale {
 	
 	public void setShopper(Buyer buyer) {
 		this.buyer = buyer;
-	}
-	
-	public List<CarList> getListOfCars() {
-		return listOfCars;
-	}
-
-
-	public void setListOfItems(List<CarList> listOfCars) {
-		this.listOfCars = listOfCars;
-	}
-
+	}	
 	
 	
+	public CarList getCar() {
+		return car;
+	}
+
+	public void setCar(CarList car) {
+		this.car = car;
+	}
+
 	public String toString() {
-		return "ID: " + id + "Sale Date: " + saleDate + " ;Price: " + price + " ;Buyer: " + buyer + " ;List of cars: " + listOfCars;
+		return "ID: " + id + "Sale Date: " + saleDate + " ;Price: " + price + " ;Buyer: " + buyer + " ;List of cars: " + car;
 	}
 }
