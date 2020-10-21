@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>File Change</title>
+<title>Change Car Information</title>
 </head>
 <body>
 	<h1 style="font-size:40px">Choose which section you want to change and type in new info</h1>
