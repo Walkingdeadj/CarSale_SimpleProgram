@@ -35,6 +35,11 @@ public class Buyer {
 		this.buyerPNum = buyerPNum;
 	}
 	
+	public Buyer(String buyerName) {
+		super();
+		this.buyerName = buyerName;
+	}
+	
 	public int getId() {
 		return id;
 	}

@@ -2,9 +2,12 @@ package controller;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import model.Buyer;
+import model.CarSale;
+
 
 public class BuyerHelper {
 	public static EntityManagerFactory emfactory1 = Persistence.createEntityManagerFactory("UsersCarSale");
@@ -64,5 +67,28 @@ public class BuyerHelper {
 		em.merge(buyerToUpdate);
 		em.getTransaction().commit();
 		em.close();
+	}
+	
+	public void updateSale(CarSale toEdit) {
+		EntityManager em = emfactory1.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(toEdit);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public Buyer findBuyer(String buyerName) {
+		EntityManager em = emfactory1.createEntityManager();
+		em.getTransaction().begin();
+		TypedQuery<Buyer> typedQuery = em.createQuery("select sh from Buyer sh where sh.buyerName = :selectedbuyerName",Buyer.class);
+		typedQuery.setParameter("selectedbuyerName", buyerName);
+		Buyer foundBuyer;
+		try {
+			foundBuyer = typedQuery.getSingleResult();
+		} catch (NoResultException ex) {
+		foundBuyer = new Buyer(buyerName);
+		}
+		em.close();
+		return foundBuyer;
 	}
 }

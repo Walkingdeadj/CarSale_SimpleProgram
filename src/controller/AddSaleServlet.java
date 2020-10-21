@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +19,7 @@ import model.CarSale;
 /**
  * Servlet implementation class AddSaleServlet
  */
-@WebServlet(name = "addSaleServlet", urlPatterns = { "/addSaleServlet" })
+@WebServlet("/addSaleServlet")
 public class AddSaleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,7 +35,8 @@ public class AddSaleServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
+		
 	}
 
 	/**

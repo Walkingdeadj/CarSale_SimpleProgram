@@ -14,17 +14,20 @@
 	<h4>Choose A Car</h4>	
 	<table border="1">
 	<tr><td>ID</td><td>Model</td><td>Make</td></tr>
+	
 	<c:forEach items="${requestScope.allCars}" var="currentcar">
 	<tr>
  	<td><input type = "radio" name ="CarId" value = "${currentcar.id}"></td>
  	<td>${currentcar.model}</td>
  	<td>${currentcar.make}</td>
  	</tr>
- 	</c:forEach>
- 	</table> 	
+ 	</c:forEach> 	
+ 	</table>
+ 	
  	<br>
  	<h4>Choose a Car Buyer</h4>
  	<table border="1">
+	
 	<tr><td>ID</td><td>Name</td><td>Phone Number</td></tr>
 	<c:forEach items="${requestScope.allBuyers}" var="currentBuyer">
 	<tr>
