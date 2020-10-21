@@ -8,7 +8,7 @@
 <title>Car List</title>
 </head>
 <body>
-	<h1 style="font-size:40px"> Car's file </h1>
+	<h1 style="font-size:40px"> Car's Information </h1>
 	<h2 style="font-size:25px"> Please choose the option to change car's information </h2>
 	<h3 style="color:red" style="font-size:10px"> Select car first then do the operation </h3>
 
