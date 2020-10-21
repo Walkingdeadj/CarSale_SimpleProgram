@@ -11,9 +11,9 @@
 
 <property name="javax.persistence.jdbc.user" value="admin"/>
 
-<property name="javax.persistence.jdbc.password" value="Dmacc2020"/>
+<property name="javax.persistence.jdbc.password" value="jason123"/>
 
-<property name="javax.persistence.jdbc.url" value="jdbc:mysql://cis175.cv3h2bghe0oh.us-east-1.rds.amazonaws.com/cars_database"/>
+<property name="javax.persistence.jdbc.url" value="jdbc:mysql://cis175.cimavcok00px.us-east-1.rds.amazonaws.com/car?serverTimezone=UTC"/>
 		</properties>
 	</persistence-unit>
 </persistence>

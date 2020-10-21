@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import model.Buyer;
 import model.CarList;
 import model.CarSale;
 
@@ -54,5 +55,21 @@ public static EntityManagerFactory emfactory2 = Persistence.createEntityManagerF
 		CarSale found = em.find(CarSale.class, tempId);
 		em.close();
 		deleteList(found);		
+	}
+	
+	public CarSale serachForCarSaleById(Integer tempId) {
+		EntityManager em = emfactory2.createEntityManager();
+		em.getTransaction().begin();
+		CarSale found = em.find(CarSale.class, tempId);
+		em.close();
+		return found;
+	}
+	
+	public void updateSale(CarSale toEdit) {
+		EntityManager em = emfactory2.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(toEdit);
+		em.getTransaction().commit();
+		em.close();
 	}
 }
