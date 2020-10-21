@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Sale List</title>
 </head>
 <body>
 	<h1 style="font-size:40px"> Car's file </h1>
